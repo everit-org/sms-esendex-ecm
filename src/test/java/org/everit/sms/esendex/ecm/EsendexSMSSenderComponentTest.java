@@ -21,7 +21,7 @@ public class EsendexSMSSenderComponentTest {
     try {
       smsSender.sendSMS("fakeNumber", "message");
       Assert.fail("fake credentials should throw exception");
-    } catch (Exception e) {
+    } catch (RuntimeException e) {
       Assert.assertTrue(e.getMessage() != null);
     }
   }
