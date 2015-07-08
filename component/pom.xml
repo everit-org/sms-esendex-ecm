@@ -20,15 +20,15 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>org.everit.sms</groupId>
-  <artifactId>org.everit.sms.esendex.ecm</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
-
   <parent>
     <groupId>org.everit.config</groupId>
     <artifactId>org.everit.config.oss</artifactId>
     <version>7.0.1</version>
   </parent>
+
+  <groupId>org.everit.sms</groupId>
+  <artifactId>org.everit.sms.esendex.ecm</artifactId>
+  <version>1.0.0</version>
 
   <packaging>bundle</packaging>
   <name>Everit - Esendex SMS Sender ECM Component</name>
@@ -97,7 +97,7 @@
     <dependency>
       <groupId>org.everit.sms</groupId>
       <artifactId>org.everit.sms.esendex</artifactId>
-      <version>1.0.0-SNAPSHOT</version>
+      <version>1.0.0</version>
     </dependency>
 
     <dependency>
