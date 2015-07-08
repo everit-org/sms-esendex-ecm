@@ -13,13 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.everit.sms.esendex.ecm;
+package org.everit.sms.esendex.ecm.internal;
 
 import org.everit.osgi.ecm.annotation.Activate;
 import org.everit.osgi.ecm.annotation.Component;
 import org.everit.osgi.ecm.annotation.ConfigurationPolicy;
 import org.everit.osgi.ecm.annotation.Service;
 import org.everit.osgi.ecm.annotation.attribute.StringAttribute;
+import org.everit.osgi.ecm.annotation.attribute.StringAttributes;
 import org.everit.osgi.ecm.extender.ECMExtenderConstants;
 import org.everit.sms.api.SMSSender;
 import org.everit.sms.esendex.EsendexSMSSender;
@@ -33,7 +34,10 @@ import aQute.bnd.annotation.headers.ProvideCapability;
     configurationPolicy = ConfigurationPolicy.REQUIRE)
 @ProvideCapability(ns = ECMExtenderConstants.CAPABILITY_NS_COMPONENT,
     value = ECMExtenderConstants.CAPABILITY_ATTR_CLASS + "=${@class}")
-@Service(value = { SMSSender.class, EsendexSMSSenderComponent.class })
+@StringAttributes({
+    @StringAttribute(attributeId = "sms.provider", defaultValue = "esendex")
+})
+@Service(value = { SMSSender.class })
 public class EsendexSMSSenderComponent implements SMSSender {
 
   private String accoutReference;
