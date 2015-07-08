@@ -15,28 +15,42 @@
  */
 package org.everit.sms.esendex.ecm.internal;
 
+import aQute.bnd.annotation.headers.ProvideCapability;
+
 import org.everit.osgi.ecm.annotation.Activate;
+import org.everit.osgi.ecm.annotation.AttributeOrder;
 import org.everit.osgi.ecm.annotation.Component;
 import org.everit.osgi.ecm.annotation.ConfigurationPolicy;
 import org.everit.osgi.ecm.annotation.Service;
 import org.everit.osgi.ecm.annotation.attribute.StringAttribute;
 import org.everit.osgi.ecm.annotation.attribute.StringAttributes;
 import org.everit.osgi.ecm.extender.ECMExtenderConstants;
-import org.everit.sms.api.SMSSender;
+import org.everit.sms.SMSSender;
 import org.everit.sms.esendex.EsendexSMSSender;
-
-import aQute.bnd.annotation.headers.ProvideCapability;
+import org.everit.sms.esendex.ecm.EsendexSMSSenderComponentConfig;
 
 /**
  * Esendex SMS sender component.
  */
-@Component(label = "Esendex SMS Sender Component",
-    configurationPolicy = ConfigurationPolicy.REQUIRE)
-@ProvideCapability(ns = ECMExtenderConstants.CAPABILITY_NS_COMPONENT,
+@Component(
+    componentId = EsendexSMSSenderComponentConfig.COMPONENT_ID,
+    label = "Everit - Esendex SMS Sender Component",
+    description = "SMS Sender Compnent using the http://developers.esendex.com/ Java SDK",
+    configurationPolicy = ConfigurationPolicy.FACTORY)
+@ProvideCapability(
+    ns = ECMExtenderConstants.CAPABILITY_NS_COMPONENT,
     value = ECMExtenderConstants.CAPABILITY_ATTR_CLASS + "=${@class}")
+@AttributeOrder({
+    EsendexSMSSenderComponentConfig.ATTR_USERNAME,
+    EsendexSMSSenderComponentConfig.ATTR_PASSWORD,
+    EsendexSMSSenderComponentConfig.ATTR_ACCOUNT_REFERENCE,
+    EsendexSMSSenderComponentConfig.ATTR_SMS_PROVIDER })
 @StringAttributes({
-    @StringAttribute(attributeId = "sms.provider", defaultValue = "esendex")
-})
+    @StringAttribute(
+        attributeId = EsendexSMSSenderComponentConfig.ATTR_SMS_PROVIDER,
+        defaultValue = EsendexSMSSenderComponentConfig.SMS_PROVIDER_ESENDEX,
+        label = "Provider",
+        description = "The provider of the implementation.") })
 @Service(value = { SMSSender.class })
 public class EsendexSMSSenderComponent implements SMSSender {
 
@@ -58,17 +72,29 @@ public class EsendexSMSSenderComponent implements SMSSender {
     smsSender.sendSMS(recipientNumber, message);
   }
 
-  @StringAttribute(defaultValue = "")
+  @StringAttribute(
+      attributeId = EsendexSMSSenderComponentConfig.ATTR_ACCOUNT_REFERENCE,
+      defaultValue = "",
+      label = "Account reference",
+      description = "The Esendex account reference.")
   public void setAccoutReference(final String accoutReference) {
     this.accoutReference = accoutReference;
   }
 
-  @StringAttribute(defaultValue = "")
+  @StringAttribute(
+      attributeId = EsendexSMSSenderComponentConfig.ATTR_PASSWORD,
+      defaultValue = "",
+      label = "Password",
+      description = "The password belonging to the username of the Esendex account.")
   public void setPassword(final String password) {
     this.password = password;
   }
 
-  @StringAttribute(defaultValue = "")
+  @StringAttribute(
+      attributeId = EsendexSMSSenderComponentConfig.ATTR_USERNAME,
+      defaultValue = "",
+      label = "Username",
+      description = "The username of the Exendex account.")
   public void setUsername(final String username) {
     this.username = username;
   }

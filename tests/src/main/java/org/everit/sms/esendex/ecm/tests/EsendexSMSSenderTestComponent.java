@@ -15,18 +15,18 @@
  */
 package org.everit.sms.esendex.ecm.tests;
 
-import org.everit.osgi.dev.testrunner.TestDuringDevelopment;
+import aQute.bnd.annotation.headers.ProvideCapability;
+
 import org.everit.osgi.ecm.annotation.Component;
 import org.everit.osgi.ecm.annotation.Service;
 import org.everit.osgi.ecm.annotation.ServiceRef;
 import org.everit.osgi.ecm.annotation.attribute.StringAttribute;
 import org.everit.osgi.ecm.annotation.attribute.StringAttributes;
 import org.everit.osgi.ecm.extender.ECMExtenderConstants;
-import org.everit.sms.api.SMSSender;
+import org.everit.sms.SMSSender;
+import org.everit.sms.esendex.ecm.EsendexSMSSenderComponentConfig;
 import org.junit.Assert;
 import org.junit.Test;
-
-import aQute.bnd.annotation.headers.ProvideCapability;
 
 /**
  * Test Esendex ECM SMS Sender.
@@ -42,13 +42,13 @@ public class EsendexSMSSenderTestComponent {
 
   private SMSSender smsSender;
 
-  @ServiceRef(defaultValue = "(sms.provider=esendex)")
+  @ServiceRef(defaultValue = "(" + EsendexSMSSenderComponentConfig.ATTR_SMS_PROVIDER + "="
+      + EsendexSMSSenderComponentConfig.SMS_PROVIDER_ESENDEX + ")")
   public void setSmsSender(final SMSSender smsSender) {
     this.smsSender = smsSender;
   }
 
   @Test
-  @TestDuringDevelopment
   public void testSMSSending() {
     Assert.assertTrue(smsSender != null);
   }

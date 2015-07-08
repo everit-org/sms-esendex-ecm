@@ -21,7 +21,7 @@
     <artifactId>org.everit.config.oss</artifactId>
     <version>7.0.1</version>
   </parent>
-  
+
   <groupId>org.everit.sms</groupId>
   <artifactId>org.everit.sms.esendex.ecm.parent</artifactId>
   <version>1.0.0-SNAPSHOT</version>
@@ -41,4 +41,5 @@
     <module>component</module>
     <module>tests</module>
   </modules>
+
 </project>
