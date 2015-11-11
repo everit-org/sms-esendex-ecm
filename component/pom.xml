@@ -23,12 +23,12 @@
   <parent>
     <groupId>org.everit.config</groupId>
     <artifactId>org.everit.config.oss</artifactId>
-    <version>7.0.1</version>
+    <version>7.2.0</version>
   </parent>
 
   <groupId>org.everit.sms</groupId>
   <artifactId>org.everit.sms.esendex.ecm</artifactId>
-  <version>1.0.0</version>
+  <version>1.1.0-SNAPSHOT</version>
 
   <packaging>bundle</packaging>
   <name>Everit - Esendex SMS Sender ECM Component</name>
@@ -85,7 +85,7 @@
               *
             </Import-Package>
             <Export-Package>
-              org.everit.sms.esendex.ecm;version=1.0.0
+              org.everit.sms.esendex.ecm;version=1.1.0
             </Export-Package>
           </instructions>
         </configuration>
@@ -121,7 +121,7 @@
     <dependency>
       <groupId>org.everit.osgi</groupId>
       <artifactId>org.everit.osgi.ecm.component.api</artifactId>
-      <version>1.0.0</version>
+      <version>2.0.0</version>
     </dependency>
     <dependency>
       <groupId>org.everit.osgi</groupId>
@@ -131,7 +131,7 @@
     <dependency>
       <groupId>org.everit.osgi</groupId>
       <artifactId>org.everit.osgi.ecm.annotation</artifactId>
-      <version>1.0.0</version>
+      <version>2.1.0</version>
     </dependency>
   </dependencies>
 </project>

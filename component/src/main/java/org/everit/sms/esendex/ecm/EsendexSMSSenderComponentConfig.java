@@ -30,6 +30,8 @@ public final class EsendexSMSSenderComponentConfig {
 
   public static final String COMPONENT_ID = "org.everit.sms.esendex.ecm.EsendexSMSSenderComponent";
 
+  public static final String DEFAULT_SERVICE_DESCRIPTION = "Esendex SMS Sender Component";
+
   public static final String SMS_PROVIDER_ESENDEX = "esendex";
 
   private EsendexSMSSenderComponentConfig() {
