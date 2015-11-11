@@ -44,26 +44,17 @@ import aQute.bnd.annotation.headers.ProvideCapability;
     @StringAttribute(
         attributeId = EsendexSMSSenderComponentConfig.ATTR_SMS_PROVIDER,
         defaultValue = EsendexSMSSenderComponentConfig.SMS_PROVIDER_ESENDEX,
-        priority = EsendexSMSSenderComponent.P4_SMS_PROVIDER,
+        priority = EsendexSMSSenderAttributePriority.P4_SMS_PROVIDER,
         label = "Provider",
         description = "The provider of the implementation."),
     @StringAttribute(attributeId = Constants.SERVICE_DESCRIPTION,
         defaultValue = EsendexSMSSenderComponentConfig.DEFAULT_SERVICE_DESCRIPTION,
-        priority = EsendexSMSSenderComponent.P0_SERVICE_DESCRIPTION, label = "Service Description",
+        priority = EsendexSMSSenderAttributePriority.P0_SERVICE_DESCRIPTION,
+        label = "Service Description",
         description = "The description of this component configuration. It is used to easily "
             + "identify the service registered by this component.") })
 @Service(value = { SMSSender.class })
 public class EsendexSMSSenderComponent implements SMSSender {
-
-  public static final int P0_SERVICE_DESCRIPTION = 0;
-
-  public static final int P1_USERNAME = 1;
-
-  public static final int P2_PASSWORD = 2;
-
-  public static final int P3_ACCOUNT_REFERENCE = 3;
-
-  public static final int P4_SMS_PROVIDER = 4;
 
   private String accoutReference;
 
@@ -86,7 +77,7 @@ public class EsendexSMSSenderComponent implements SMSSender {
   @StringAttribute(
       attributeId = EsendexSMSSenderComponentConfig.ATTR_ACCOUNT_REFERENCE,
       defaultValue = "",
-      priority = P3_ACCOUNT_REFERENCE,
+      priority = EsendexSMSSenderAttributePriority.P3_ACCOUNT_REFERENCE,
       label = "Account reference",
       description = "The Esendex account reference.")
   public void setAccoutReference(final String accoutReference) {
@@ -96,7 +87,7 @@ public class EsendexSMSSenderComponent implements SMSSender {
   @StringAttribute(
       attributeId = EsendexSMSSenderComponentConfig.ATTR_PASSWORD,
       defaultValue = "",
-      priority = P2_PASSWORD,
+      priority = EsendexSMSSenderAttributePriority.P2_PASSWORD,
       label = "Password",
       description = "The password belonging to the username of the Esendex account.")
   public void setPassword(final String password) {
@@ -106,7 +97,7 @@ public class EsendexSMSSenderComponent implements SMSSender {
   @StringAttribute(
       attributeId = EsendexSMSSenderComponentConfig.ATTR_USERNAME,
       defaultValue = "",
-      priority = P1_USERNAME,
+      priority = EsendexSMSSenderAttributePriority.P1_USERNAME,
       label = "Username",
       description = "The username of the Exendex account.")
   public void setUsername(final String username) {
